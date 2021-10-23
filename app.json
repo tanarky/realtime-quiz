@@ -1,0 +1,9 @@
+{
+  "name": "tanarky-realtime-quiz",
+  "description": "realtime quiz service",
+  "website": "http://github.com/tanarky/realtime-quiz",
+  "success_url": "/",
+  "addons": ["rediscloud"],
+  "env": {},
+  "scripts": {}
+}
