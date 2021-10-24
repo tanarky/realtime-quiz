@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/json'
 require 'faye/websocket'
 require 'thread'
 require 'redis'
