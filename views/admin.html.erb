@@ -9,21 +9,15 @@
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h1>Quiz</h1>
-        <div id="qqq"></div>
+        <h1>Quiz Admin</h1>
+        <p></p>
       </div>
       <form id="input-form" class="form-inline">
-        <div class="form-group">
-          <input id="input-handle" type="text" class="form-control" placeholder="Enter handle" autofocus />
-        </div>
-        <div class="form-group">
-          <select id="input-text" class="custom-select" name="answer">
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-          </select>
-        </div>
+        <input id="input-handle" type="text" class="form-control" placeholder="Enter handle" value="admin" />
+        <input id="input-qid" type="text" class="form-control" value="id123" />
+
+        <input id="input-text" type="text" class="form-control" value="日本一高い山は？ A: 阿蘇山  B: 八甲田山  C: 富士山  D: 高尾山" autofocus />
+
         <button class="btn btn-primary" type="submit">Send</button>
       </form>
       <div class="page-header">
@@ -37,6 +31,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="assets/js/application.js"></script>
+    <script type="text/javascript" src="assets/js/admin.js"></script>
   </body>
 </html>
