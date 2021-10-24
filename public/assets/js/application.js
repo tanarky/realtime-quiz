@@ -1,5 +1,5 @@
 var scheme   = 'ws://';
-if((new URL(window.location.href).protocol) == 'https'){
+if((new URL(window.location.href).protocol) == 'https:'){
   scheme = 'wss://';
 }
 var uri      = scheme + window.document.location.host + "/";
