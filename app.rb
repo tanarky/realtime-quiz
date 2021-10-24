@@ -7,6 +7,37 @@ require 'json'
 require 'erb'
 #require './middlewares/quiz_data'
 
+QA = {
+  q_1: {
+    body: '日本一高い山は？',
+    choices: [
+      '阿蘇山',
+      '八甲田山',
+      '富士山',
+      '高尾山',
+    ],
+    answer: 2,
+  },
+  q_2: {
+    body: 'フランスの三色旗の三色の配置は、すべての旗でほぼ3等分、同じバランスである。',
+    choices: [
+      '○',
+      '☓',
+    ],
+    answer: 1,
+  },
+  q_3: {
+    body: '新潟米で有名な銘柄と言えば次のうちどれでしょう？',
+    choices: [
+      'ゆめぴりか',
+      'あきたこまち',
+      'ササニシキ',
+      'コシヒカリ',
+    ],
+    answer: 3,
+  },
+}
+
 module Quiz
   class Backend
     KEEPALIVE_TIME = 10 # in seconds
@@ -40,12 +71,11 @@ module Quiz
         ws.on :message do |event|
           p [:message, event.data]
           data = sanitize(event.data)
-          if data[:handle] == 'admin'
-            p "yes, admin3"
+          if data[:from] == 'ADMIN'
             @redis.publish(CHANNEL, JSON.generate(data))
           else
-            p data[:handle]
-            p "not admin desux"
+            p data
+            # 回答を蓄積する
           end
         end
 
@@ -66,9 +96,10 @@ module Quiz
     private
     def sanitize(message)
       json = JSON.parse(message, symbolize_names: true)
-      data = {}
-      json.each {|key, value| data[key] = ERB::Util.html_escape(value) }
-      data
+      #data = {}
+      # json.each {|key, value| data[key] = ERB::Util.html_escape(value) }
+      #data
+      json
     end
   end
 
@@ -96,7 +127,7 @@ module Quiz
     end
 
     get "/admin" do
-      p 'hello4'
+      @qa = QA
       erb :"admin.html"
     end
   end

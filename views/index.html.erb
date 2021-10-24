@@ -8,29 +8,27 @@
   </head>
   <body>
     <div class="container">
-      <div class="jumbotron">
-        <h1>Quiz</h1>
-        <div id="qqq"></div>
+      <div class="jumbotron p-4">
+        <h1 class="h3">Quiz</h1>
+        <h2 class="h4 m-0">問題</h2>
+        <div class="mb-2" id="now-question">出題まで名前を入力してお待ち下さい</div>
+        
+        <h2 class="h4 m-0">あなたの回答</h2>
+        <div class="mb-2" id="your-answer">...</div>
+
+        <h2 class="h4 m-0">正解</h2>
+        <div class="mb-2" id="now-answer">...</div>
       </div>
-      <form id="input-form" class="form-inline">
-        <div class="form-group">
-          <input id="input-handle" type="text" class="form-control" placeholder="Enter handle" autofocus />
-        </div>
-        <div class="form-group">
-          <select id="input-text" class="custom-select" name="answer">
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-          </select>
-        </div>
-        <button class="btn btn-primary" type="submit">Send</button>
+
+      <form id="answer-form" class="">
+        <input id="input-handle" type="text" class="form-control" placeholder="名前を入力" autofocus />
+
+        <select id="answer" class="custom-select" name="answer"></select>
+
+        <button class="btn btn-primary" type="submit">送信</button>
       </form>
-      <div class="page-header">
-        <h1>Chat</h1>
-      </div>
-      <div id="chat-text">
-      </div>
+
+      <div id="chat-text"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
