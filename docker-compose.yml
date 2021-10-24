@@ -1,0 +1,35 @@
+version: '3'
+services:
+  redis:
+    image: redis:5.0.6-alpine
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    ports:
+      - 16379:6379
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      RAILS_LOG_TO_STDOUT: 1
+      RAILS_SERVE_STATIC_FILES: 1
+      EDITOR: vi
+      REDIS_URL: redis://redis:6379
+    container_name: realtime-quiz
+    command: /bin/sh -c "rm -f /app/tmp/server.pid && bundle && bundle exec puma -C config/puma.rb"
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+    ports:
+      - 13333:3000
+    depends_on:
+      - redis
+      - db
+    tty: true
+    stdin_open: true
+
+volumes:
+  bundle:
+    driver: local
